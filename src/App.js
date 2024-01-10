@@ -9,6 +9,7 @@ function App() {
       <SecondComponent />
       <ThirdComponent />
       <FourthComponent />
+      <FifthComponent />
     </div>
   );
 }
@@ -39,6 +40,14 @@ class FourthComponent extends Component{
       <div className='FourthComponent'>Fourth Component</div>
     );
   }
+}
+
+  class FifthComponent extends Component{
+    render(){
+      return(
+        <div className='FifthComponent'>Fifth Component</div>
+      );
+    }
 }
 
 export default App;
