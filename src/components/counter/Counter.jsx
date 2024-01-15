@@ -1,3 +1,5 @@
+import './Counter.css'
+
 export default function Counter() {
 
     function incrementCouterFunction() {
@@ -8,7 +10,7 @@ export default function Counter() {
         <div className="Counter">
             <span className="count">0</span>
             <div>
-                <button className="counterButton" onClick={incrementCouterFunction}>+1</button>
+                <button className="counterButton" onClick={incrementCouterFunction}>+1</button>                        
             </div>
         </div>
     )
