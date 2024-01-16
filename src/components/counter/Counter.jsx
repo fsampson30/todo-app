@@ -1,24 +1,24 @@
 import { useState } from 'react'
 import './Counter.css'
 
-export default function Counter() {
+export default function Counter({by}) {
 
     const [count, setCount] = useState(0)
 
     function incrementCouterFunction() {
-        setCount(count + 1)
+        setCount(count + by)
     }
 
     function dencrementCouterFunction() {
-        setCount(count - 1)
+        setCount(count - by)
     }
 
     return (
         <div className="Counter">
             <span className="count">{count}</span>
             <div>
-                <button className="counterButton" onClick={incrementCouterFunction}>+1</button>
-                <button className="counterButton" onClick={dencrementCouterFunction}>-1</button>
+                <button className="counterButton" onClick={incrementCouterFunction}>+{by}</button>
+                <button className="counterButton" onClick={dencrementCouterFunction}>-{by}</button>
             </div>            
         </div>
     )
