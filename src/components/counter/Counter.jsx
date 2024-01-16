@@ -6,15 +6,20 @@ export default function Counter() {
     const [count, setCount] = useState(0)
 
     function incrementCouterFunction() {
-        setCount(count+1)
+        setCount(count + 1)
+    }
+
+    function dencrementCouterFunction() {
+        setCount(count - 1)
     }
 
     return (
         <div className="Counter">
             <span className="count">{count}</span>
             <div>
-                <button className="counterButton" onClick={incrementCouterFunction}>+1</button>                        
-            </div>
+                <button className="counterButton" onClick={incrementCouterFunction}>+1</button>
+                <button className="counterButton" onClick={dencrementCouterFunction}>-1</button>
+            </div>            
         </div>
     )
 }
