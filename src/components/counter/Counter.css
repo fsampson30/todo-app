@@ -1,13 +1,20 @@
-.counterButton{
+button{
     font-size:30px;
-    background-color:#00a5ab;
-    width:100px;
+    width:120px;
     margin:10px;
     color: white;
     padding:15px;
     border-radius:30px;
     border-color: black;
     border-width: 5px ;
+
+}
+.counterButton{    
+    background-color:#00a5ab;    
+}
+
+.resetButton{
+    background-color:#824f8c;
 }
 
 .count{
@@ -19,3 +26,4 @@
     font-size: 150px;
     padding: 20px;
 }
+
