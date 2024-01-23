@@ -5,18 +5,20 @@ import './TodoApp.css'
 export default function TodoApp() {
     return (
         <div className="TodoApp">
-            <HeaderComponent />
+
             <BrowserRouter>
+                <HeaderComponent />
                 <Routes>
-                    <Route path='/' element={<LoginComponent />} /> 
-                    <Route path='/login' element={<LoginComponent />} /> 
-                    <Route path='/welcome/:username' element={<WelcomeComponent />} /> 
+                    <Route path='/' element={<LoginComponent />} />
+                    <Route path='/login' element={<LoginComponent />} />
+                    <Route path='/welcome/:username' element={<WelcomeComponent />} />
                     <Route path='/todos' element={<ListTodosComponent />} />
                     <Route path='logout' element={<LogoutComponent />} />
                     <Route path='*' element={<ErrorComponent />} />
                 </Routes>
+                <FooterComponent />
             </BrowserRouter>
-            <FooterComponent />
+
         </div>
     )
 }
@@ -28,18 +30,18 @@ function LoginComponent() {
     const [showSuccessMessage, setshowSuccessMessage] = useState(false)
     const [showErrorMessage, setshowErrorMessage] = useState(false)
 
-    const navigate  = useNavigate()
+    const navigate = useNavigate()
 
-    function handleUserNameChange(event){
+    function handleUserNameChange(event) {
         setUsername(event.target.value)
     }
 
-    function handlePasswordChange(event){
+    function handlePasswordChange(event) {
         setPassword(event.target.value)
     }
 
-    function handleSubmit(){
-        if(username==='flavio' && password==='123'){
+    function handleSubmit() {
+        if (username === 'flavio' && password === '123') {
             setshowSuccessMessage(true)
             setshowErrorMessage(false)
             navigate(`/welcome/${username}`)
@@ -52,11 +54,11 @@ function LoginComponent() {
     return (
         <div className="Login">
             {showSuccessMessage && <div className='successMessage'>Authenticated Successfully</div>}
-            {showErrorMessage && <div className='errorMessage'>Authentication Failed. Please check your credentials.</div> }
+            {showErrorMessage && <div className='errorMessage'>Authentication Failed. Please check your credentials.</div>}
             <div className="LoginForm">
                 <div>
                     <label>User Name</label>
-                    <input type="text" name="username" value={username} onChange={handleUserNameChange}/>
+                    <input type="text" name="username" value={username} onChange={handleUserNameChange} />
                 </div>
                 <div>
                     <label>Password</label>
@@ -72,7 +74,7 @@ function LoginComponent() {
 
 function WelcomeComponent() {
 
-    const {username} = useParams()
+    const { username } = useParams()
     return (
         <div className="WelcomeComponent">
             <h1>Welcome {username} </h1>
@@ -95,14 +97,14 @@ function ErrorComponent() {
 }
 
 function ListTodosComponent() {
-    
+
     const today = new Date()
-    const targetDate = new Date(today.getFullYear()+12, today.getMonth(),today.getDay())
-    
+    const targetDate = new Date(today.getFullYear() + 12, today.getMonth(), today.getDay())
+
     const todos = [
         { id: 1, description: 'Learn AWS', done: false, targetDate: targetDate },
         { id: 2, description: 'Learn Google Cloud', done: false, targetDate: targetDate },
-        { id: 3, description: 'Learn Devops', done: false, targetDate: targetDate},
+        { id: 3, description: 'Learn Devops', done: false, targetDate: targetDate },
         { id: 4, description: 'Learn Microservices', done: false, targetDate: targetDate }
     ]
 
@@ -141,17 +143,35 @@ function ListTodosComponent() {
 
 function HeaderComponent() {
     return (
-        <div className="Header">
-            Header <hr />
+        <header className="border-bottom border-light border-5 mb-5 p-2">
+        <div className="container">
+            <div className="row">
+                <nav className="navbar navbar-expand-lg">
+                    <a className="navbar-brand ms-2 fs-2 fw-bold text-black" href="https://github.com/fsampson30">Link</a>
+                    <div className="collapse navbar-collapse">
+                        <ul className="navbar-nav">
+                            <li className="nav-item fs-5"><Link className="nav-link" to="/welcome/flavio">Home</Link></li>
+                            <li className="nav-item fs-5"><Link className="nav-link" to="/todos">Todos</Link></li>
+                        </ul>
+                    </div>
+                    <ul className="navbar-nav">
+                        <li className="nav-item fs-5"><Link className="nav-link" to="/login">Login</Link></li>
+                        <li className="nav-item fs-5"><Link className="nav-link" to="/logout">Logout</Link></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
+    </header>
     )
 }
 
 function FooterComponent() {
     return (
-        <div className="Header">
-            <hr /> Footer
-        </div>
+        <footer className="footer">
+            <div className="container">
+                Your Footer
+            </div>
+        </footer>
     )
 }
 
