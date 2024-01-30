@@ -9,7 +9,7 @@ function WelcomeComponent() {
     const [message, setMessage] = useState(null)
 
     function callHelloWorldRestApi(){             
-        retrieveHelloWorldBean()
+        retrieveHelloWorldBean('Flavio')
         .then((response) => successfulResponse(response))
         .catch((error) => errorResponse(error))
         .finally(() => console.log('cleanup'))
