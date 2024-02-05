@@ -13,3 +13,7 @@ export default function retrieveAllTodosForUser(name){
 export function deleteTodoForUser(name,id){        
     return apiClient.delete(`/users/${name}/todos/${id}`)
 }
+
+export function retrieveTodo(name,id){        
+    return apiClient.get(`/users/${name}/todos/${id}`)
+}
