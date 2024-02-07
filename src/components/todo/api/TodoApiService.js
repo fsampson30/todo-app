@@ -17,3 +17,7 @@ export function deleteTodoForUser(name,id){
 export function retrieveTodo(name,id){        
     return apiClient.get(`/users/${name}/todos/${id}`)
 }
+
+export function updateTodo(name,id, todo){        
+    return apiClient.put(`/users/${name}/todos/${id}`,todo)
+}
