@@ -35,7 +35,7 @@ function onSubmit(values) {
         done: false
     }
 
-    if (id == -1) {
+    if (id === -1) {
         createTodo(username, todo)
             .then(response => {
                 navigate('/todos')
@@ -59,7 +59,7 @@ function validate(values) {
     if (values.description.length < 5) {
         errors.description = 'Enter at least 5 characters'
     }
-    if (values.targetDate ==null || values.targetDate == '') {
+    if (values.targetDate ===null || values.targetDate === '') {
         errors.targetDate = 'Enter a valid date'
     }
     return errors
