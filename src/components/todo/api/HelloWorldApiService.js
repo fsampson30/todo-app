@@ -6,10 +6,10 @@ const apiClient = axios.create(
     }
 )
 
-export default function retrieveHelloWorldBean(name){        
+export default function retrieveHelloWorldBean(name,token){        
     return apiClient.get(`/hello-world/path-variable/${name}`,{
         headers:{
-            Authorization: ''
+            Authorization: token
         }
 
     })
