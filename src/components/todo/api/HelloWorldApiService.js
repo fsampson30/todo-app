@@ -20,6 +20,5 @@ export function executeBasicAuthenticationService(token){
         headers:{
             Authorization: token 
         }
-
     })
 }
