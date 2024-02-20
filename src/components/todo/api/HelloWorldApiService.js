@@ -1,13 +1,8 @@
 import { apiClient } from "./ApiClient"
 
 
-export default function retrieveHelloWorldBean(name,token){        
-    return apiClient.get(`/hello-world/path-variable/${name}`,{
-        headers:{
-            Authorization: token
-        }
-
-    })
+export default function retrieveHelloWorldBean(name){        
+    return apiClient.get(`/hello-world/path-variable/${name}`)
 }
 
 export function executeBasicAuthenticationService(token){        
