@@ -52,10 +52,7 @@ function onSubmit(values) {
 }
 
 function validate(values) {
-    let errors = {
-        //description: 'Enter a valid description',
-        //targetDate: 'Enter a valid date'
-    }
+    let errors = {}
     if (values.description.length < 5) {
         errors.description = 'Enter at least 5 characters'
     }
