@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
-import { executeBasicAuthenticationService } from "../api/HelloWorldApiService";
+import executeBasicAuthenticationService, { executeJwtAuthenticationService } from "../api/AuthenticationApiService";
 import { apiClient } from "../api/ApiClient";
+
 
 export const AuthContext = createContext()
 
@@ -14,7 +15,7 @@ export default function AuthProvider({children}){
 
     const [token, setToken] = useState(null)
 
-    async function login(username, password){
+    /*async function login(username, password){
                
         const baToken = 'Basic ' + window.btoa(username + ":" + password)
 
@@ -28,6 +29,35 @@ export default function AuthProvider({children}){
                 apiClient.interceptors.request.use(
                     (config) => {                        
                         config.headers.Authorization=baToken
+                        return config
+                    }
+                )
+                return true
+            } else {
+                logout()
+                return false
+            }
+        } catch(error){
+            logout()
+            return false
+        }
+    }*/
+
+    async function login(username, password){
+               
+        const baToken = 'Basic ' + window.btoa(username + ":" + password)
+
+        try {            
+            const response = await executeJwtAuthenticationService(username,password)
+            if (response.status === 200) {
+                const jwtToken = 'Bearer ' + response.data.token
+                setAuthenticated(true)
+                setUsername(username)
+                setToken(jwtToken)
+
+                apiClient.interceptors.request.use(
+                    (config) => {                        
+                        config.headers.Authorization=jwtToken
                         return config
                     }
                 )
