@@ -43,9 +43,7 @@ export default function AuthProvider({children}){
         }
     }*/
 
-    async function login(username, password){
-               
-        const baToken = 'Basic ' + window.btoa(username + ":" + password)
+    async function login(username, password){            
 
         try {            
             const response = await executeJwtAuthenticationService(username,password)
